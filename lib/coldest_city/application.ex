@@ -5,11 +5,16 @@ defmodule ColdestCity.Application do
 
   use Application
 
+  alias ColdestCity.{CityProducer, TempProcessor, TempTracker}
+
   @impl true
   def start(_type, _args) do
     children = [
       # Starts a worker by calling: ColdestCity.Worker.start_link(arg)
       # {ColdestCity.Worker, arg}
+      TempTracker,
+      CityProducer,
+      TempProcessor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
